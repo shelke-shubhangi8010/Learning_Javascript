@@ -49,3 +49,171 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="mr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>लॉगिन</title>
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+        background: #f5f7fb;
+      }
+      .card {
+        width: 100%;
+        max-width: 380px;
+        background: #ffffff;
+        padding: 28px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(2, 8, 20, 0.08);
+        border: 1px solid #eef0f5;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: 22px;
+        text-align: center;
+        color: #0f172a;
+      }
+      label {
+        display: block;
+        margin: 14px 0 6px;
+        font-size: 14px;
+        color: #334155;
+      }
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        border: 1px solid #d6dae5;
+        border-radius: 10px;
+        padding: 12px 14px;
+        font-size: 16px;
+        outline: none;
+        transition: border-color .2s, box-shadow .2s;
+      }
+      input:focus {
+        border-color: #6366f1;
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+      }
+      .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 12px;
+        gap: 10px;
+      }
+      .actions {
+        margin-top: 18px;
+      }
+      button[type="submit"] {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        border-radius: 10px;
+        background: #6366f1;
+        color: #fff;
+        cursor: pointer;
+        transition: transform .05s ease, box-shadow .2s ease, background .2s ease;
+        box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
+      }
+      button[type="submit"]:hover { background: #5558ee; }
+      button[type="submit"]:active { transform: translateY(1px); }
+      .helper {
+        margin-top: 12px;
+        font-size: 13px;
+        color: #64748b;
+        text-align: center;
+      }
+      .field-wrap { position: relative; }
+      .toggle-pass {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        border: none;
+        background: transparent;
+        padding: 6px;
+        cursor: pointer;
+        font-size: 13px;
+        color: #475569;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card" role="main" aria-labelledby="loginTitle">
+      <h1 id="loginTitle">लॉगिन</h1>
+      <form onsubmit="handleLogin(event)" novalidate>
+        <label for="email">ईमेल आयडी</label>
+        <input id="email" name="email" type="email" placeholder="तुमचा ईमेल लिहा" required />
+
+        <label for="password">पासवर्ड</label>
+        <div class="field-wrap">
+          <input id="password" name="password" type="password" placeholder="तुमचा पासवर्ड" minlength="6" required />
+          <button class="toggle-pass" type="button" aria-label="पासवर्ड दाखवा" onclick="togglePassword()">दाखवा</button>
+        </div>
+
+        <div class="actions">
+          <button type="submit">लॉगिन</button>
+        </div>
+        <p class="helper">फक्त डेमो पेज — सबमिट केल्यावर खाली परिणाम दिसेल.</p>
+        <p id="result" class="helper" aria-live="polite"></p>
+      </form>
+    </main>
+
+    <script>
+      function togglePassword() {
+        const input = document.getElementById('password');
+        const btn = document.querySelector('.toggle-pass');
+        const isPass = input.type === 'password';
+        input.type = isPass ? 'text' : 'password';
+        btn.textContent = isPass ? 'लपवा' : 'दाखवा';
+        btn.setAttribute('aria-label', isPass ? 'पासवर्ड लपवा' : 'पासवर्ड दाखवा');
+      }
+
+      function handleLogin(e) {
+        e.preventDefault();
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const result = document.getElementById('result');
+
+        if (!email.checkValidity()) {
+          result.textContent = 'कृपया वैध ईमेल लिहा.';
+          email.focus();
+          return;
+        }
+        if (!password.checkValidity()) {
+          result.textContent = 'किमान 6 अक्षरांचा पासवर्ड आवश्यक आहे.';
+          password.focus();
+          return;
+        }
+
+        // Demo output
+        result.textContent = `लॉगिन विनंती: ${email.value}`;
+      }
+    </script>
+  </body>
+</html>
