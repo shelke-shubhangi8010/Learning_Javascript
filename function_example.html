@@ -14,10 +14,10 @@
 
 
     <!-- Number 1 -->
-    <input type="number" id="num1" class="form-control mb-3" placeholder="Enter Number 1">
+    <input type="number" id="n1" class="form-control mb-3" placeholder="Enter Number 1">
 
     <!-- Number 2 -->
-    <input type="number" id="num2" class="form-control mb-3" placeholder="Enter Number 2">
+    <input type="number" id="n2" class="form-control mb-3" placeholder="Enter Number 2">
 
     <!-- Result Box -->
     <input type="text" id="result" class="form-control mb-3 text-center fw-bold" placeholder="Result" readonly>
@@ -25,33 +25,42 @@
 
     <!-- Buttons -->
     <div class="d-flex justify-content-between">
-      <button class="btn btn-success w-25" onclick="calculate('+')">+</button>
-      <button class="btn btn-primary w-25" onclick="calculate('-')">-</button>
-      <button class="btn btn-warning w-25" onclick="calculate('*')">*</button>
-      <button class="btn btn-danger w-25" onclick="calculate('/')">/</button>
+      <button class="btn btn-success w-25" type="button" onclick="add()('+')">+</button>
+      <button class="btn btn-primary w-25" type="button" onclick="sub()('-')">-</button>
+      <button class="btn btn-warning w-25"  type= "button"onclick="multi()('*')">*</button>
+      <button class="btn btn-danger w-25" type ="button" onclick="div()('/')">/</button>
+      <button class="btn btn-danger w-25" type ="reset">Reset</button>
     </div>
+
   </div>
 </div>
 
 <script>
-function calculate(operator) {
-  let num1 = parseInt(document.write("num1").value);
-  let num2 = parseInt(document.write("num2").value);
-  let result = "";
-
-  if (no(num1) || no(num2)) {
-    result = "Enter valid numbers!";
-  } else {
-    switch (operator) {
-      case '+': result = num1 + num2; break;
-      case '-': result = num1 - num2; break;
-      case '*': result = num1 * num2; break;
-      case '/':  result = num2 !== 0 ? (num1 / num2) : "Cannot divide by 0";  break;
-    }
+  var a,b, result;
+  function add(){
+    a=Number(document.myform.n1.value);
+    b=Number(document.myform.n2.value);
+    result=a+b;
+    document.myform.result.value=result.tofixed(3);
   }
-
-  document.write("result").value = result;
-}
+  function sub(){
+    a=Number(document.myform.n1.value);
+    b=Number(document.myform.n2.value);
+    result=a-b;
+    document.myform.result.value=result.tofixed(3);
+  }
+  function multi(){
+    a=Number(document.myform.n1.value);
+    b=Number(document.myform.n2.value);
+    result=a*b;
+    document.myform.result.value=result.tofixed(3);
+  }
+  function div(){
+    a=Number(document.myform.n1.value);
+    b=Number(document.myform.n2.value);
+    result=a/b;
+    document.myform.result.value=result.tofixed(3);
+  }
 </script>
 
 </body>
@@ -59,3 +68,4 @@ function calculate(operator) {
 
 
 
+    
