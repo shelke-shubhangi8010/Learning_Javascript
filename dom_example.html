@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="heading"> This Is Plain Html Output</h2>
+    <button onclick="changeText()">Click Me</button>
+
+
+    <p id ="para">This Paragraph</p>
+    <button onclick="changeColor()">Click Me</button>
+    
+
+
+
+    <script>
+        function changeText(){
+            document.getElementById("heading").innerHTML = "Welcome to dom in Javascript";
+        }
+
+        function changeColor(){
+            document.getElementById("para").style.color = "purple";
+            document.getElementById("para").style.fontSize = "50px";
+        }
+    </script>
+</body>
+</html>
