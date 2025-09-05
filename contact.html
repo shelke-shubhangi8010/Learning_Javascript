@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,40 +8,60 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="card shadow-lg p-4 rounded-3">
           <h3 class="text-center mb-4"> Simple Contact Form</h3>
-          <form>
+          <form id="contact form" class="p-4 border rounded" onsubmit="return validate()">
             <!-- Name -->
             <div class="mb-3">
               <label for="name" class="form-label">Name:</label>
               <input type="text" class="form-control" id="name" placeholder="Your name">
+              <span class="text-denger" id="nameError"></span>
             </div>
 
             <!-- Email -->
             <div class="mb-3">
               <label for="email" class="form-label">Email:</label>
               <input type="email" class="form-control" id="email" placeholder="Your email">
+              <span class="error" id="emailError"></span>
             </div>
 
             <!-- Mobile Number -->
             <div class="mb-3">
               <label for="mobile" class="form-label">Mobile Number:</label>
               <input type="tel" class="form-control" id="mobile" placeholder="Your mobile number">
+              <span class="error" id="mobileError"></span>
+            </div>
+
+            <!-- password -->
+            <div class="mb-3">
+              <label for="password" class="form-label">Password:</label>
+              <input type="tel" class="form-control" id="password" placeholder="enter password">
+              <span class="error" id="passwordError"></span>
+            </div>
+
+            <!--  comfirm password -->
+            <div class="mb-3">
+              <label for=" confirm password" class="form-label"> Confirm Password:</label>
+              <input type="tel" class="form-control" id=" confirmpassword" placeholder="enter confirm password">
+              <span class="error" id="confirmpasswordError"></span>
             </div>
 
             <!-- Message -->
             <div class="mb-3">
               <label for="message" class="form-label">Message:</label>
               <textarea class="form-control" id="message" rows="4" placeholder="Your message"></textarea>
+              <span class="error" id="messageError"></span>
             </div>
 
             <!-- Gender -->
             <div class="mb-3">
               <label class="form-label">Gender:</label><br>
+              <span class="error" id="genderError"></span>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="gender" id="male" value="male">
                 <label class="form-check-label" for="male">Male</label>
@@ -59,17 +80,14 @@
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="terms">
               <label class="form-check-label" for="terms">I agree to the terms & conditions</label>
+              <span class="error" id="termError"></span>
             </div>
 
             <!-- Submit -->
             <div>
               <button type="submit" class="btn btn-primary btn-lg">Submit</button>
               <button type="Reset" class="btn btn-success">Reset</button>
-
-            </div>
-            <div>
-
-              <button type="Reset" class="btn btn-success">Reset</button>
+              <span class="error" id="submitError"></span>
 
             </div>
 
@@ -82,5 +100,106 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function validation() {
+      //get form value
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const mobile = document.getElementById("mobile").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const confirmpassword = document.getElementById("confirmpassword").value.trim();
+      const message = document.getElementById("message").value.trim();
+      const agree = document.getElementById("agree").value.trim();
+      const gender = document.queryselector('inpur[name="gender"]:cheaked').value.trim();
+
+        //Error Spans
+      const nameError = document.getElementById("nameError");
+      const emailError = document.getElementById("emailError");
+      const mobileError = document.getElementById("mobileError");
+      const passwordError = document.getElementById("passwordError");
+      const confirmpasswordError = document.getElementById("confirmpasswordError");
+      const messageError = document.getElementById("messageError");
+      const genderError = document.getElementById("genderError");
+      const agreeError = document.getElementById("agreeError").value.trim();
+
+       //clear previous Error  message
+      nameError.textContent = "";
+      emailError.textContent = "";
+      mobileError.textContent = "";
+      passwordError.textContent = "";
+      confirmpasswordError.textContent = "";
+      messageError.textContent = "";
+      genderError.textContent = "";
+      agreeError.textContent = "";
+
+
+
+
+
+      if(name ===""){
+        nameError.textContent = "please enter at least 3 character.";
+        isvalid =false;
+      }elseif() {
+         nameError.textContent = "please enter at least 3 character.";
+        isvalid =false;
+      }
+
+       if(email ===""){
+        emailError.textContent = "please enter your mail.";
+        isvalid =false;
+      }else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))- for email {
+         nameError.textContent = "please enter your mail .";
+        isvalid =false;
+      }
+
+
+       if(mobile ===""){
+       mobileError.textContent = "please enter at 10 dight mobile number.";
+        isvalid =false;
+      }else if (!/^\d{10}$/.test(mobile)) - for mobile 10 digit validation {
+         mobileError.textContent = "please enter at 10 digit mobile number.";
+        isvalid =false;
+      }
+
+
+      const passwordPattern = /^(?=.[0-9])(?=.[!@#$%^&])[A-Za-z0-9!@#$%^&]{6,}$/; - for password
+       if(password ===""){
+        passwordError.textContent = "please enter a password.";
+        isvalid =false;
+      }elseif(!passwordPattern.test(password)) {
+         passwordError.textContent = "password must be atlaest 8 character ";
+        isvalid =false;
+      }
+
+const confirmpasswordPattern = /^(?=.[0-9])(?=.[!@#$%^&])[A-Za-z0-9!@#$%^&]{6,}$/; - for confirmpassword
+       if(confirmpassword ===""){
+        confirmpasswordError.textContent = "please enter a password.";
+        isvalid =false;
+      }elseif(!passwordPattern.test(confirmpassword)) {
+         confirmpasswordError.textContent = "password is not match ";
+        isvalid =false;
+      }
+
+      if(!gender){
+        genderError.textContent = "please select your gender.";
+        isvalid= false;
+      }
+
+      if(!agree){
+        agreeError.textContent = "you must agree to the terms & condition.";
+        isvalid= false;
+      }
+
+      //show Bootstrap success alert if valid
+      if(isvalid){
+        alert("form Submitted Successfully")
+      }
+
+
+
+
+    }
+  </script>
 </body>
+
 </html>
