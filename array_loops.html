@@ -40,7 +40,19 @@
         document.write("Total Sum Using while loop = " + sumwhile + "<hr>")
 
         //do-while loop
-       
+        sumdowhile = 0;
+        var k = 0;
+        document.write("<h2>Using do-While loop</h2><ul>")
+        do {
+            document.write("<li>" + array[k] + "</li>")
+            sumwhile += array[k];
+            k++;
+
+        }
+        while (k < array.length);
+       document.write("</ul>")
+       document.write("Total Sum Using do-while loop = " + sumdowhile + "<hr>")
+
     </script>
 </body>
 
