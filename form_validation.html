@@ -86,7 +86,7 @@
               </div>
             </div>
 
-            <!-- Terms -->
+            <!-- agree -->
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="agree">
               <label class="form-check-label" for="agree">I agree to the terms & conditions</label>
@@ -154,7 +154,7 @@
          nameError.textContent = "please enter at least 3 character.";
         isvalid =false;
       }
-
+         //email
        if(email ===""){
         emailError.textContent = "please enter your mail.";
         isvalid =false;
@@ -163,7 +163,7 @@
         isvalid =false;
       }
 
-
+       //mobile
        if (mobile ===""){
        mobileError.textContent = "please enter at 10 dight mobile number.";
         isvalid =false;
@@ -171,7 +171,7 @@
          mobileError.textContent = "please enter at 10 digit mobile number.";
         isvalid =false;
       }
-
+         //password
      //password validation (at least 6 char ,1 number, 1 special char)
       const passwordPattern = /^(?=.[0-9])(?=.[!@#$%^&])[A-Za-z0-9!@#$%^&]{6,}$/; 
        if(password ===""){
